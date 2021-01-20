@@ -9,3 +9,11 @@ export const PageTitle = styled.h1`
   font-size: 27px;
 `;
 export const PageBody = styled.div``;
+
+export const ErrorMessage = styled.div`
+  margin: 10px;
+  padding: 10px;
+  background-color: #ffcaca;
+  color: #000;
+  border: 1px solid #ff0000;
+`;

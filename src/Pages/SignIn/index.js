@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { PageContainer, PageTitle } from '../../components/MainComponents';
+import {
+  PageContainer,
+  PageTitle,
+  ErrorMessage,
+} from '../../components/MainComponents';
 import { PageArea } from './styled';
 import useAPI from '../../helpers/OlxAPI';
 import { doLogin } from '../../helpers/AuthHandler';
@@ -28,25 +32,43 @@ export default function Page() {
     <PageContainer>
       <PageTitle>Login</PageTitle>
       <PageArea>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <form onSubmit={handleSubimit}>
           <label className="area">
             <div className="area-title">E-mail</div>
             <div className="area-input">
-              <input type="email" disabled={disabled} />
+              <input
+                type="email"
+                disabled={disabled}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
             </div>
           </label>
 
           <label className="area">
             <div className="area-title">Senha</div>
             <div className="area-input">
-              <input type="password" disabled={disabled} />
+              <input
+                type="password"
+                disabled={disabled}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
           </label>
 
           <label className="area">
             <div className="area-title">Lembre-me</div>
             <div className="area-input">
-              <input type="checkbox" disabled={disabled} />
+              <input
+                type="checkbox"
+                disabled={disabled}
+                checked={rememberPassword}
+                onChange={(e) => setRememberPassword(!rememberPassword)}
+              />
             </div>
 
             <label className="area">
